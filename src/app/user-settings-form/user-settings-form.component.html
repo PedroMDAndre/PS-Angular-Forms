@@ -4,14 +4,16 @@
         <div class="form-group">
             <label for="name">Name</label>
             <input id="name" name="name" class="form-control" [(ngModel)]="userSettings.name" required
-                #nameField="ngModel"
-                (blur)="onBlur(nameField)"
+                #nameField="ngModel" (blur)="onBlur(nameField)"
                 [class.field-error]="form.submitted && nameField.invalid" />
-            <div [hidden]="!form.submitted || nameField.valid"
-                class="alert alert-danger">
+            <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
                 Enter a name
             </div>
         </div>
+        <button type="button" class="btn btn-primary" name="singleModel" [(ngModel)]="singleModel" btnCheckbox
+            btnCheckboxTrue="On" btnCheckboxFalse="Off">
+            {{ singleModel }}
+        </button>
 
 
 
@@ -54,9 +56,9 @@
             <label for="subscriptionType">Subscription Type</label>
             <select class="form-control" id="subscriptionType" name="subscriptionType"
                 [(ngModel)]="userSettings.subscriptionType">
-                <option>Monthly</option>
-                <option>Annual</option>
-                <option>Lifetime</option>
+                <option *ngFor="let type of subscriptionTypes | async ">
+                    {{ type }}
+                </option>
             </select>
         </div>
 
@@ -66,8 +68,7 @@
             </textarea>
         </div>
 
-        <div [hidden]="!postError"
-            class="alert alert-danger">
+        <div [hidden]="!postError" class="alert alert-danger">
             {{ postErrorMessage }}
         </div>
 

@@ -10,6 +10,10 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  getSubscriptionTypes(): Observable<string[]>{
+    return of(["Monthly", "Annual", "Lifetime"]);
+  }
+
   postUserSettingsForm(userSettings: UserSettings): Observable<any> { 
     return this.http.post("https://putsreq.com/AL8b9MeI71SJg0Way6DM", userSettings);
     
