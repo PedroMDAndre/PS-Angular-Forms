@@ -12,14 +12,13 @@ import { UserSettings } from '../data/user-settings';
 export class UserSettingsFormComponent implements OnInit {
 
   originalUserSettings: UserSettings = {
-    name: "Milton",
-    emailOffers: true,
-    interfaceStyle: "dark",
-    subscriptionType: "Annual",
-    notes: "here are some notes..."
+    name: null,
+    emailOffers: null,
+    interfaceStyle: null,
+    subscriptionType: null,
+    notes: null
   };
 
-  singleModel = "On";
 
   userSettings: UserSettings = { ...this.originalUserSettings };
   postError: boolean = false;
