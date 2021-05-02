@@ -19,7 +19,11 @@ export class UserSettingsFormComponent implements OnInit {
     notes: null
   };
 
-
+  startDate: Date;
+  startTime: Date;
+  maxRating: number = 10;
+  userRating: number = 5;
+  isReadonly: boolean = false;
   userSettings: UserSettings = { ...this.originalUserSettings };
   postError: boolean = false;
   postErrorMessage: string = "";
@@ -29,6 +33,8 @@ export class UserSettingsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscriptionTypes = this.dataService.getSubscriptionTypes();
+    this.startDate = new Date();
+    this.startTime = new Date();
   }
 
 
